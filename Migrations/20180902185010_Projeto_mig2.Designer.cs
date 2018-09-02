@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using osnet.Models;
 
 namespace osnet.Migrations
 {
     [DbContext(typeof(OsNetContext))]
-    partial class OsNetContextModelSnapshot : ModelSnapshot
+    [Migration("20180902185010_Projeto_mig2")]
+    partial class Projeto_mig2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,7 +23,7 @@ namespace osnet.Migrations
                     b.Property<int>("id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int?>("Projetoid");
+                    b.Property<int>("ProjetoId");
 
                     b.Property<string>("cnpj");
 
@@ -46,7 +48,7 @@ namespace osnet.Migrations
 
                     b.HasKey("id");
 
-                    b.HasIndex("Projetoid");
+                    b.HasIndex("ProjetoId");
 
                     b.ToTable("Cliente");
                 });
@@ -57,10 +59,6 @@ namespace osnet.Migrations
                         .ValueGeneratedOnAdd();
 
                     b.Property<int>("ClienteId");
-
-                    b.Property<int>("OrdemServicoId");
-
-                    b.Property<int>("ProjetoId");
 
                     b.Property<int>("ServicoId");
 
@@ -90,10 +88,6 @@ namespace osnet.Migrations
                     b.HasKey("id");
 
                     b.HasIndex("ClienteId");
-
-                    b.HasIndex("OrdemServicoId");
-
-                    b.HasIndex("ProjetoId");
 
                     b.HasIndex("ServicoId");
 
@@ -166,9 +160,10 @@ namespace osnet.Migrations
 
             modelBuilder.Entity("osnet.Models.Cliente", b =>
                 {
-                    b.HasOne("osnet.Models.Projeto")
+                    b.HasOne("osnet.Models.Projeto", "projeto")
                         .WithMany("Clientes")
-                        .HasForeignKey("Projetoid");
+                        .HasForeignKey("ProjetoId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("osnet.Models.OrdemServico", b =>
@@ -176,16 +171,6 @@ namespace osnet.Migrations
                     b.HasOne("osnet.Models.Cliente", "cliente")
                         .WithMany("ClienteOrdemServico")
                         .HasForeignKey("ClienteId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("osnet.Models.OrdemServico", "ordemServico")
-                        .WithMany()
-                        .HasForeignKey("OrdemServicoId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("osnet.Models.Projeto", "projeto")
-                        .WithMany("OrdensServico")
-                        .HasForeignKey("ProjetoId")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("osnet.Models.Servico", "servico")

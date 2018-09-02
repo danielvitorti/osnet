@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using osnet.Models;
 
 namespace osnet.Migrations
 {
     [DbContext(typeof(OsNetContext))]
-    partial class OsNetContextModelSnapshot : ModelSnapshot
+    [Migration("20180902193652_UpdateProject")]
+    partial class UpdateProject
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -58,8 +60,6 @@ namespace osnet.Migrations
 
                     b.Property<int>("ClienteId");
 
-                    b.Property<int>("OrdemServicoId");
-
                     b.Property<int>("ProjetoId");
 
                     b.Property<int>("ServicoId");
@@ -90,8 +90,6 @@ namespace osnet.Migrations
                     b.HasKey("id");
 
                     b.HasIndex("ClienteId");
-
-                    b.HasIndex("OrdemServicoId");
 
                     b.HasIndex("ProjetoId");
 
@@ -178,13 +176,8 @@ namespace osnet.Migrations
                         .HasForeignKey("ClienteId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("osnet.Models.OrdemServico", "ordemServico")
-                        .WithMany()
-                        .HasForeignKey("OrdemServicoId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
                     b.HasOne("osnet.Models.Projeto", "projeto")
-                        .WithMany("OrdensServico")
+                        .WithMany()
                         .HasForeignKey("ProjetoId")
                         .OnDelete(DeleteBehavior.Cascade);
 

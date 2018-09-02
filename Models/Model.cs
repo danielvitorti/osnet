@@ -12,6 +12,10 @@ namespace osnet.Models
         }
         
         public DbSet<Cliente> Cliente { get; set; }
+
+        public DbSet<Projeto> Projeto {get; set; }
+
+    
         public DbSet<OrdemServico> OrdemServico { get; set; }
 
         public DbSet<TipoOrdemServico> TipoOrdemServico { get; set; }
@@ -27,6 +31,47 @@ namespace osnet.Models
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlite("Data Source=ordem_servico.db");
+        }
+    }
+
+    public class Projeto
+    {
+
+        public int id { get; set; }
+
+
+
+        [Required]
+        [Display(Name = "Nome")]
+        public string nome { get; set; }
+
+        
+        [Display(Name = "Data de início")]
+        public System.DateTime dataInicio { get; set; }
+
+
+        
+        [Display(Name = "Data de término")]
+        public System.DateTime dataTermino { get; set; }
+
+
+        
+        [Required]
+        public System.DateTime dataCadastro { get; set; }
+
+
+        public List<Cliente> Clientes { get; set; }
+
+
+
+        public List<OrdemServico> OrdensServico { get; set; }
+
+
+
+
+        public Projeto()
+        {
+            this.dataCadastro = System.DateTime.Now;
         }
     }
 
@@ -68,6 +113,10 @@ namespace osnet.Models
 
         public List<OrdemServico> ClienteOrdemServico { get; set; }
 
+
+        
+
+
         
     }
 
@@ -99,6 +148,9 @@ namespace osnet.Models
         public int ClienteId { get; set; }
         public Cliente cliente { get; set; }
 
+        public int ProjetoId { get; set; }
+        public Projeto projeto { get; set; }
+
         [Required]
         public int TipoOrdemServicoId {get; set;}
 
@@ -115,6 +167,15 @@ namespace osnet.Models
 
         public Status status{get; set;}
 
+
+
+        [Required]
+        public int OrdemServicoId{get; set;}
+
+
+        public OrdemServico ordemServico{ get; set;}
+
+        
 
         [Display(Name = "Início")]
         public System.DateTime dataInicio{get; set;}
