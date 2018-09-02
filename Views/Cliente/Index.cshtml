@@ -1,0 +1,89 @@
+@model IEnumerable<osnet.Models.Cliente>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.telefone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.cpf)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.cnpj)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.enderecoCep)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.enderecoRua)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.enderecoNumero)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.enderecoBairro)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.enderecoCidade)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.telefone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cpf)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cnpj)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.enderecoCep)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.enderecoRua)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.enderecoNumero)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.enderecoBairro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.enderecoCidade)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,75 @@
+@model osnet.Models.Cliente
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Create</h2>
+
+<h4>Cliente</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="nome" class="control-label"></label>
+                <input asp-for="nome" class="form-control" />
+                <span asp-validation-for="nome" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="telefone" class="control-label"></label>
+                <input asp-for="telefone" class="form-control" />
+                <span asp-validation-for="telefone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="email" class="control-label"></label>
+                <input asp-for="email" class="form-control" />
+                <span asp-validation-for="email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="cpf" class="control-label"></label>
+                <input asp-for="cpf" class="form-control" />
+                <span asp-validation-for="cpf" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="cnpj" class="control-label"></label>
+                <input asp-for="cnpj" class="form-control" />
+                <span asp-validation-for="cnpj" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="enderecoCep" class="control-label"></label>
+                <input asp-for="enderecoCep" class="form-control" />
+                <span asp-validation-for="enderecoCep" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="enderecoRua" class="control-label"></label>
+                <input asp-for="enderecoRua" class="form-control" />
+                <span asp-validation-for="enderecoRua" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="enderecoNumero" class="control-label"></label>
+                <input asp-for="enderecoNumero" class="form-control" />
+                <span asp-validation-for="enderecoNumero" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="enderecoBairro" class="control-label"></label>
+                <input asp-for="enderecoBairro" class="form-control" />
+                <span asp-validation-for="enderecoBairro" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="enderecoCidade" class="control-label"></label>
+                <input asp-for="enderecoCidade" class="form-control" />
+                <span asp-validation-for="enderecoCidade" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

@@ -1,0 +1,72 @@
+@model osnet.Models.OrdemServico
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>OrdemServico</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.titulo)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.titulo)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.resumo)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.resumo)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.justificativa)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.justificativa)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.descricao)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.descricao)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.resolucao)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.resolucao)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.cliente)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.cliente.nome)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.tipoOrdemServico)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.tipoOrdemServico.nome)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.servico)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.servico.nome)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.status)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.status.nome)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
