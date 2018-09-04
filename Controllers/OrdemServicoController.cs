@@ -129,10 +129,14 @@ namespace osnet.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+
+            // Combos ---------
             ViewData["ClienteId"] = new SelectList(_context.Cliente, "id", "nome", ordemServico.ClienteId);
             ViewData["ServicoId"] = new SelectList(_context.Servico, "id", "nome", ordemServico.ServicoId);
             ViewData["StatusId"] = new SelectList(_context.Status, "id", "nome", ordemServico.StatusId);
             ViewData["TipoOrdemServicoId"] = new SelectList(_context.TipoOrdemServico, "id", "nome", ordemServico.TipoOrdemServicoId);
+            // Combos ---------
+            
             return View(ordemServico);
         }
 

@@ -7,9 +7,9 @@
 <h2>Index</h2>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Cadastrar nova ordem de serviço</a>
 </p>
-<table class="table">
+<table class="table table-responsive table-striped">
     <thead>
         <tr>
             <th>
@@ -63,19 +63,23 @@
             <td>
                 @Html.DisplayFor(modelItem => item.cliente.nome)
             </td>
+            
             <td>
                 @Html.DisplayFor(modelItem => item.tipoOrdemServico.nome)
             </td>
+            
             <td>
                 @Html.DisplayFor(modelItem => item.servico.nome)
             </td>
+            
             <td>
                 @Html.DisplayFor(modelItem => item.status.nome)
             </td>
+
             <td>
-                <a asp-action="Edit" asp-route-id="@item.id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.id">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.id">Alterar</a> |
+                <a asp-action="Details" asp-route-id="@item.id">Detalhes</a> |
+                <a asp-action="Delete" asp-route-id="@item.id">Excluir</a>
             </td>
         </tr>
 }

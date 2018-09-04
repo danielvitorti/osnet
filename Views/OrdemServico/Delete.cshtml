@@ -1,16 +1,19 @@
 @model osnet.Models.OrdemServico
 
 @{
-    ViewData["Title"] = "Delete";
+    ViewData["Title"] = "Excluir";
 }
 
-<h2>Delete</h2>
+<h2>Excluir</h2>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>Tem certeza que deseja excluir esta ordem de serviço?</h3>
 <div>
-    <h4>OrdemServico</h4>
+    <h4>Ordem de serviço</h4>
     <hr />
     <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.id)
+        </dt>
         <dt>
             @Html.DisplayNameFor(model => model.titulo)
         </dt>
@@ -69,7 +72,7 @@
     
     <form asp-action="Delete">
         <input type="hidden" asp-for="id" />
-        <input type="submit" value="Delete" class="btn btn-default" /> |
-        <a asp-action="Index">Back to List</a>
+        <input type="submit" value="Excluir" class="btn btn-default" /> |
+        <a asp-action="Index">Listagem</a>
     </form>
 </div>

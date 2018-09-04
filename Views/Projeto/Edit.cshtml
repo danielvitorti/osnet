@@ -28,19 +28,15 @@
                 <input asp-for="dataTermino" class="form-control" />
                 <span asp-validation-for="dataTermino" class="text-danger"></span>
             </div>
+            
             <div class="form-group">
-                <label asp-for="dataCadastro" class="control-label"></label>
-                <input asp-for="dataCadastro" class="form-control" />
-                <span asp-validation-for="dataCadastro" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Alterar" class="btn btn-default" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="index">Listagem</a>
 </div>
 

@@ -57,6 +57,7 @@ namespace osnet.Models
 
         
         [Required]
+        [Display(Name = "Data de cadastro")]
         public System.DateTime dataCadastro { get; set; }
 
 
@@ -164,6 +165,7 @@ namespace osnet.Models
 
 
         [Display(Name = "Início")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/mm/yyyy}")]
         public System.DateTime dataInicio{get; set;}
 
 

@@ -1,15 +1,15 @@
 @model IEnumerable<osnet.Models.Servico>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Serviço";
 }
 
-<h2>Index</h2>
+<h2>Serviços</h2>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="create">Cadastrar novo serviço</a>
 </p>
-<table class="table">
+<table class="table-responsive table-striped">
     <thead>
         <tr>
             <th>
@@ -31,9 +31,9 @@
                 @Html.DisplayFor(modelItem => item.valor)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.id">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.id">Alterar</a> |
+                <a asp-action="Details" asp-route-id="@item.id">Detalhes</a> |
+                <a asp-action="Delete" asp-route-id="@item.id">Excluir</a>
             </td>
         </tr>
 }
