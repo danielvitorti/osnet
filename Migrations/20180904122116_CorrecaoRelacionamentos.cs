@@ -1,31 +1,26 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace osnet.Migrations
 {
-    public partial class Cliente_mig : Migration
+    public partial class CorrecaoRelacionamentos : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Cliente",
+                name: "Projeto",
                 columns: table => new
                 {
                     id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     nome = table.Column<string>(nullable: false),
-                    telefone = table.Column<string>(nullable: true),
-                    email = table.Column<string>(nullable: true),
-                    cpf = table.Column<string>(nullable: true),
-                    cnpj = table.Column<string>(nullable: true),
-                    enderecoCep = table.Column<string>(nullable: true),
-                    enderecoRua = table.Column<string>(nullable: true),
-                    enderecoNumero = table.Column<string>(nullable: true),
-                    enderecoBairro = table.Column<string>(nullable: true),
-                    enderecoCidade = table.Column<string>(nullable: true)
+                    dataInicio = table.Column<DateTime>(nullable: false),
+                    dataTermino = table.Column<DateTime>(nullable: false),
+                    dataCadastro = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Cliente", x => x.id);
+                    table.PrimaryKey("PK_Projeto", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
@@ -69,6 +64,35 @@ namespace osnet.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Cliente",
+                columns: table => new
+                {
+                    id = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    nome = table.Column<string>(nullable: false),
+                    telefone = table.Column<string>(nullable: true),
+                    email = table.Column<string>(nullable: true),
+                    cpf = table.Column<string>(nullable: true),
+                    cnpj = table.Column<string>(nullable: true),
+                    enderecoCep = table.Column<string>(nullable: true),
+                    enderecoRua = table.Column<string>(nullable: true),
+                    enderecoNumero = table.Column<string>(nullable: true),
+                    enderecoBairro = table.Column<string>(nullable: true),
+                    enderecoCidade = table.Column<string>(nullable: true),
+                    projetoIdid = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Cliente", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_Cliente_Projeto_projetoIdid",
+                        column: x => x.projetoIdid,
+                        principalTable: "Projeto",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "OrdemServico",
                 columns: table => new
                 {
@@ -79,10 +103,15 @@ namespace osnet.Migrations
                     justificativa = table.Column<string>(nullable: true),
                     descricao = table.Column<string>(nullable: true),
                     resolucao = table.Column<string>(nullable: true),
+                    observacao = table.Column<string>(nullable: true),
                     ClienteId = table.Column<int>(nullable: false),
+                    ProjetoId = table.Column<int>(nullable: false),
                     TipoOrdemServicoId = table.Column<int>(nullable: false),
                     ServicoId = table.Column<int>(nullable: false),
-                    StatusId = table.Column<int>(nullable: false)
+                    StatusId = table.Column<int>(nullable: false),
+                    dataInicio = table.Column<DateTime>(nullable: false),
+                    dataTermino = table.Column<DateTime>(nullable: false),
+                    dataCadastro = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -91,6 +120,12 @@ namespace osnet.Migrations
                         name: "FK_OrdemServico_Cliente_ClienteId",
                         column: x => x.ClienteId,
                         principalTable: "Cliente",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_OrdemServico_Projeto_ProjetoId",
+                        column: x => x.ProjetoId,
+                        principalTable: "Projeto",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -114,9 +149,19 @@ namespace osnet.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_Cliente_projetoIdid",
+                table: "Cliente",
+                column: "projetoIdid");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_OrdemServico_ClienteId",
                 table: "OrdemServico",
                 column: "ClienteId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_OrdemServico_ProjetoId",
+                table: "OrdemServico",
+                column: "ProjetoId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_OrdemServico_ServicoId",
@@ -150,6 +195,9 @@ namespace osnet.Migrations
 
             migrationBuilder.DropTable(
                 name: "TipoOrdemServico");
+
+            migrationBuilder.DropTable(
+                name: "Projeto");
         }
     }
 }

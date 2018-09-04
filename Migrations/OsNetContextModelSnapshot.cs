@@ -21,8 +21,6 @@ namespace osnet.Migrations
                     b.Property<int>("id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int?>("Projetoid");
-
                     b.Property<string>("cnpj");
 
                     b.Property<string>("cpf");
@@ -42,11 +40,13 @@ namespace osnet.Migrations
                     b.Property<string>("nome")
                         .IsRequired();
 
+                    b.Property<int?>("projetoIdid");
+
                     b.Property<string>("telefone");
 
                     b.HasKey("id");
 
-                    b.HasIndex("Projetoid");
+                    b.HasIndex("projetoIdid");
 
                     b.ToTable("Cliente");
                 });
@@ -57,8 +57,6 @@ namespace osnet.Migrations
                         .ValueGeneratedOnAdd();
 
                     b.Property<int>("ClienteId");
-
-                    b.Property<int>("OrdemServicoId");
 
                     b.Property<int>("ProjetoId");
 
@@ -90,8 +88,6 @@ namespace osnet.Migrations
                     b.HasKey("id");
 
                     b.HasIndex("ClienteId");
-
-                    b.HasIndex("OrdemServicoId");
 
                     b.HasIndex("ProjetoId");
 
@@ -166,21 +162,16 @@ namespace osnet.Migrations
 
             modelBuilder.Entity("osnet.Models.Cliente", b =>
                 {
-                    b.HasOne("osnet.Models.Projeto")
+                    b.HasOne("osnet.Models.Projeto", "projetoId")
                         .WithMany("Clientes")
-                        .HasForeignKey("Projetoid");
+                        .HasForeignKey("projetoIdid");
                 });
 
             modelBuilder.Entity("osnet.Models.OrdemServico", b =>
                 {
                     b.HasOne("osnet.Models.Cliente", "cliente")
-                        .WithMany("ClienteOrdemServico")
-                        .HasForeignKey("ClienteId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("osnet.Models.OrdemServico", "ordemServico")
                         .WithMany()
-                        .HasForeignKey("OrdemServicoId")
+                        .HasForeignKey("ClienteId")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("osnet.Models.Projeto", "projeto")

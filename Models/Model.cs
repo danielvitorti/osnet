@@ -63,7 +63,6 @@ namespace osnet.Models
         public List<Cliente> Clientes { get; set; }
 
 
-
         public List<OrdemServico> OrdensServico { get; set; }
 
 
@@ -111,12 +110,8 @@ namespace osnet.Models
         [Display(Name = "Cidade")]
         public string enderecoCidade { get; set; }
 
-        public List<OrdemServico> ClienteOrdemServico { get; set; }
-
-
+        public Projeto projetoId{ get; set;}
         
-
-
         
     }
 
@@ -167,15 +162,6 @@ namespace osnet.Models
 
         public Status status{get; set;}
 
-
-
-        [Required]
-        public int OrdemServicoId{get; set;}
-
-
-        public OrdemServico ordemServico{ get; set;}
-
-        
 
         [Display(Name = "Início")]
         public System.DateTime dataInicio{get; set;}
