@@ -4,14 +4,24 @@
     ViewData["Title"] = "Create";
 }
 
-<h3>
-    Projeto    
-</h3>
 
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
+<section class="content-header">
+     <h1> Projetos <small>Cadastrar</small></h1>
+     
+    <ol class="breadcrumb">
+    <li><a asp-action="index"><i class="fa fa-dashboard"></i> Projetos</a></li>
+    <li class="active">Cadastrar</li>
+    </ol>
+</section>
+<section class="content">
+<div class="body">
+    <div class="box box-success">        
+        <div class="box-body">  
+        <div class="row">
+            <div class="col-md-12">
+
+        <form asp-action="Create" class="form-horizontal" role="form">
+            <div class="box-body">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="nome" class="control-label"></label>
@@ -30,12 +40,22 @@
             </div>
             <div class="form-group">
                 <input type="submit" value="Cadastrar" class="btn btn-default" />
+                 <a asp-action="Index" class="btn btn-default">
+                                    <i class="fa fa-remove"></i> Cancelar
+                                  </a>
+            </div>
             </div>
         </form>
-    </div>
-</div>
+  </div>
+        </div>
 
-<div>
-    <a asp-action="index">Listagem</a>
-</div>
+    </div>
+
+    
+    
+    <br />
+    </div>
+</section>
+</div>            
+    
 
