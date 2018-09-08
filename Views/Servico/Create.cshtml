@@ -4,32 +4,56 @@
     ViewData["Title"] = "Create";
 }
 
-<h2>Cadastrar</h2>
 
-<h4>Serviço</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="nome" class="control-label"></label>
-                <input asp-for="nome" class="form-control" />
-                <span asp-validation-for="nome" class="text-danger"></span>
+<section class="content-header">
+     <h1> Serviços <small>Cadastrar</small></h1>
+     
+    <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> Serviços</a></li>
+    <li class="active">Cadastrar</li>
+    </ol>
+</section>
+
+<section class="content">
+<div class="body">
+    <div class="box box-success">        
+        <div class="box-body">  
+        <div class="row">
+            <div class="col-md-12">
+                
+                    <form asp-action="Create" class="form-horizontal" role="form">
+                        <div class="box-body">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                <div class="form-group">
+                                    <label asp-for="nome" class="control-label"></label>
+                                    <input asp-for="nome" class="form-control" />
+                                    <span asp-validation-for="nome" class="text-danger"></span>
+                                </div>
+                            <div class="form-group">
+                                <label asp-for="valor" class="control-label"></label>
+                                <input asp-for="valor" class="form-control" />
+                                <span asp-validation-for="valor" class="text-danger"></span>
+                            </div>
+                        
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fa fa-plus"></i>Cadastrar
+                                </button>               
+                                 <a asp-action="Index" class="btn btn-default">
+                                    <i class="fa fa-remove"></i> Cancelar
+                                  </a>
+                            </div>
+                        </div>        
+                    </form>
+                
             </div>
-            <div class="form-group">
-                <label asp-for="valor" class="control-label"></label>
-                <input asp-for="valor" class="form-control" />
-                <span asp-validation-for="valor" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Cadastrar" class="btn btn-default" />
-            </div>
-        </form>
+        </div>
+
     </div>
-</div>
 
-<div>
-    <a asp-action="index">Listagem</a>
-</div>
-
+    
+    
+    <br />
+    </div>
+</section>
+</div>    
